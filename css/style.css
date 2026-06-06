@@ -7987,11 +7987,11 @@ body.winterface-offline .interface-section .interface-shell {
   }
 
   .interface-section.interface-system-set-operations:not(.is-winterface-maximized) .interface-core {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .interface-section.interface-system-set-operations:not(.is-winterface-maximized) .interface-response[data-interface-response] {
-    min-height: 21.1rem;
+    min-height: 22.8rem;
   }
 }
 
@@ -8130,24 +8130,706 @@ body.winterface-offline .interface-section .interface-shell {
   transform: translateY(-0.08rem) scale(1.04) !important;
 }
 
+
+/* =========================
+   WINTERFACE.ONLINE CONTACT LAUNCH CARD
+========================= */
+
+.contact-launch-card {
+  width: min(var(--max-width), calc(100% - 3rem));
+  margin: 3.5rem auto 4rem;
+  padding: clamp(2rem, 4vw, 4.25rem);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: clamp(26px, 3vw, 44px);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.13), transparent 26%),
+    radial-gradient(circle at 94% 8%, rgba(56, 189, 248, 0.18), transparent 32%),
+    radial-gradient(circle at 82% 88%, rgba(236, 72, 153, 0.20), transparent 36%),
+    linear-gradient(135deg, rgba(107, 70, 150, 0.72), rgba(101, 74, 135, 0.62) 46%, rgba(56, 189, 248, 0.18));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 28px 90px rgba(0, 0, 0, 0.42),
+    0 0 58px rgba(139, 92, 246, 0.18);
+  backdrop-filter: blur(20px);
+}
+
+.contact-launch-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, 0.035) 42.2% 42.8%, transparent 43% 100%);
+  background-size: 70px 70px, 70px 70px, 280px 280px;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.contact-launch-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(56, 189, 248, 0.32), transparent 30%, transparent 70%, rgba(236, 72, 153, 0.32));
+  opacity: 0.35;
+  pointer-events: none;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  padding: 1px;
+}
+
+.contact-card-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.contact-card-copy .eyebrow {
+  color: var(--muted-strong);
+  margin-bottom: 1.5rem;
+}
+
+.contact-card-copy h2 {
+  max-width: 760px;
+  margin-bottom: 1.4rem;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.6rem, 6vw, 5.35rem);
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+}
+
+.contact-card-copy h2 span {
+  display: inline-flex;
+  gap: 0.25em;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.contact-card-copy p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(199, 210, 254, 0.86);
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.contact-card-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(128px, 1fr));
+  justify-content: end;
+  align-items: center;
+  justify-self: end;
+  width: min(100%, 430px);
+  margin-top: 0;
+}
+
+.contact-card-actions .button {
+  width: 100%;
+  min-width: 128px;
+  min-height: 58px;
+  padding-inline: 1.65rem;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+
+.contact-card-actions .button.primary {
+  box-shadow:
+    0 18px 46px rgba(56, 189, 248, 0.28),
+    0 0 38px rgba(139, 92, 246, 0.20);
+}
+
+.contact-card-actions .button.secondary {
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.20);
+}
+
+.contact-card-actions .button.secondary:hover {
+  border-color: rgba(56, 189, 248, 0.56);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.22),
+    0 0 28px rgba(56, 189, 248, 0.16);
+}
+
+@media (max-width: 900px) {
+  .contact-card-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card-actions {
+    justify-content: start;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 620px) {
+  .contact-launch-card {
+    width: min(100% - 2rem, var(--max-width));
+    margin-top: 2.25rem;
+    margin-bottom: 2.5rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .contact-card-actions {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .contact-card-actions .button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   WInterface v3.5 Operational Command Alignment Fix
+   Normalizes the Operational mode core panel so its command bar aligns with
+   Active Pathways and Showcase Bay in normal desktop view.
+   Fullscreen/maximized mode remains untouched.
+========================= */
+
+@media (min-width: 901px) {
+  .interface-section.interface-system-set-operations:not(.is-winterface-maximized) .interface-core {
+    justify-content: flex-start;
+  }
+
+  .interface-section.interface-system-set-operations:not(.is-winterface-maximized) .interface-response[data-interface-response] {
+    min-height: 21.1rem;
+  }
+}
+
+
 /* =========================
    WINTERFACE PRIMARY RAIL STABILITY PATCH
-   Stabilizes the normal desktop Active Pathways console height so the left
-   navigation buttons keep a consistent, fuller shape when switching cards.
+   Keeps Active Pathways rail cards readable in normal desktop view without
+   inflating the full three-column WInterface grid. This prevents the right
+   Primary Signal / Live Systems stack and center player area from stretching
+   taller than Operational and Showcase modes.
    Scope: normal embedded desktop view only. Fullscreen, mobile, operational,
    and showcase modes are intentionally untouched.
 ========================= */
 
 @media (min-width: 1101px) {
   .interface-section.interface-system-set-primary:not(.is-winterface-maximized) .interface-grid {
-    min-height: 38.75rem;
+    min-height: 31rem;
   }
 
   .interface-section.interface-system-set-primary:not(.is-winterface-maximized) .interface-path-list {
-    grid-template-rows: repeat(6, minmax(4.65rem, 1fr));
+    grid-template-rows: repeat(6, minmax(4.2rem, auto));
   }
 
   .interface-section.interface-system-set-primary:not(.is-winterface-maximized) .interface-path {
-    min-height: 4.65rem;
+    min-height: 4.2rem;
   }
 }
+
+
+
+/* =========================
+   WFO 3.6 SECRET INTEL NORMAL-VIEW VIDEO SPACING GUARD
+   Preserves the latest WFO fixes while keeping the duplicated video player vertically balanced.
+   CSS-only: no button, rail, control, or fullscreen behavior changes.
+========================= */
+
+@media (min-width: 901px) {
+  .interface-section.interface-system-is-media:not(.is-winterface-maximized) .interface-core {
+    justify-content: center;
+  }
+
+  .interface-section.interface-system-is-media:not(.is-winterface-maximized) .interface-media-panel:not([hidden]) {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .interface-section.interface-system-is-media:not(.is-winterface-maximized) .interface-response[data-interface-response] {
+    min-height: 0;
+  }
+}
+
+/* =========================
+   WINTERFACE XAVIER BLUE CHROME THEME
+   WInterface-only scope. No page-background theme wash.
+   Palette reference: Xavier Blue #0C2340, Running Man Blue #0033A0,
+   Cura Blue #6CACE4, Xavier Grey #9EA2A2, D'artagnan Grey #D1D1CE.
+   Gold/yellow intentionally excluded.
+========================= */
+
+.interface-section {
+  --xu-blue: #0c2340;
+  --xu-blue-dark: #061426;
+  --xu-blue-deep: #020812;
+  --xu-running-blue: #0033a0;
+  --xu-running-blue-soft: rgba(0, 51, 160, 0.22);
+  --xu-running-blue-glow: rgba(0, 51, 160, 0.44);
+  --xu-cura-blue: #6cace4;
+  --xu-cura-blue-soft: rgba(108, 172, 228, 0.20);
+  --xu-cura-blue-glow: rgba(108, 172, 228, 0.48);
+  --xu-grey: #9ea2a2;
+  --xu-grey-soft: rgba(158, 162, 162, 0.22);
+  --xu-dartagnan-grey: #d1d1ce;
+  --xu-dartagnan-soft: rgba(209, 209, 206, 0.16);
+  --xu-white-blue: #f3f8fc;
+  --xu-text: #f6f9fc;
+  --xu-muted: #c8d7e6;
+  --xu-dim: #8fa1b5;
+}
+
+.interface-section::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(12, 35, 64, 0.72),
+    rgba(0, 51, 160, 0.62),
+    rgba(108, 172, 228, 0.44),
+    rgba(158, 162, 162, 0.26),
+    transparent
+  );
+  box-shadow:
+    0 0 20px rgba(0, 51, 160, 0.22),
+    0 0 38px rgba(108, 172, 228, 0.16);
+}
+
+.interface-section .interface-shell {
+  isolation: isolate;
+  border-color: rgba(108, 172, 228, 0.34);
+  background:
+    radial-gradient(circle at 10% 12%, rgba(0, 51, 160, 0.32), transparent 36%),
+    radial-gradient(circle at 88% 16%, rgba(108, 172, 228, 0.20), transparent 38%),
+    radial-gradient(circle at 48% 94%, rgba(158, 162, 162, 0.12), transparent 42%),
+    linear-gradient(145deg, rgba(243, 248, 252, 0.070), rgba(243, 248, 252, 0.020)),
+    linear-gradient(145deg, #07172c, #020812 74%);
+  box-shadow:
+    0 34px 110px rgba(0, 0, 0, 0.68),
+    0 0 0 1px rgba(108, 172, 228, 0.10),
+    0 0 76px rgba(0, 51, 160, 0.26),
+    0 0 94px rgba(108, 172, 228, 0.12),
+    inset 0 0 74px rgba(243, 248, 252, 0.035);
+}
+
+.interface-section .interface-shell::before {
+  border-color: rgba(108, 172, 228, 0.28);
+  box-shadow:
+    inset 0 0 0 1px rgba(209, 209, 206, 0.08),
+    inset 0 0 46px rgba(0, 51, 160, 0.07);
+}
+
+.interface-section .interface-shell::after {
+  background-image:
+    linear-gradient(rgba(108, 172, 228, 0.052) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 51, 160, 0.070) 1px, transparent 1px),
+    linear-gradient(115deg, transparent 0 47%, rgba(209, 209, 206, 0.052) 48%, transparent 50% 100%),
+    radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(108, 172, 228, 0.18), transparent 30%);
+  background-size: 42px 42px, 42px 42px, 170px 170px, auto;
+  opacity: 0.74;
+  mask-image: radial-gradient(circle at center, #000, transparent 86%);
+}
+
+.interface-section .interface-ambient {
+  opacity: 0.94;
+}
+
+.interface-section .interface-orbit {
+  border-color: rgba(108, 172, 228, 0.21);
+  box-shadow:
+    inset 0 0 30px rgba(0, 51, 160, 0.09),
+    0 0 38px rgba(0, 51, 160, 0.14),
+    0 0 62px rgba(108, 172, 228, 0.10);
+}
+
+.interface-section .interface-orbit-one {
+  border-top-color: rgba(108, 172, 228, 0.72);
+  border-right-color: rgba(0, 51, 160, 0.58);
+}
+
+.interface-section .interface-orbit-two {
+  border-bottom-color: rgba(209, 209, 206, 0.42);
+  border-left-color: rgba(108, 172, 228, 0.46);
+}
+
+.interface-section .interface-scan {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 51, 160, 0.16),
+    rgba(108, 172, 228, 0.12),
+    rgba(209, 209, 206, 0.055),
+    transparent
+  );
+  filter: blur(1.5px);
+}
+
+.interface-section .interface-status-bar,
+.interface-section .interface-rail,
+.interface-section .interface-core,
+.interface-section .interface-side-panel {
+  background:
+    linear-gradient(145deg, rgba(7, 23, 44, 0.93), rgba(2, 8, 18, 0.80)),
+    rgba(6, 20, 38, 0.86);
+  border-color: rgba(108, 172, 228, 0.23);
+  box-shadow:
+    inset 0 0 34px rgba(243, 248, 252, 0.026),
+    0 0 0 1px rgba(209, 209, 206, 0.020),
+    0 18px 48px rgba(0, 0, 0, 0.34);
+}
+
+.interface-section .interface-core::before {
+  background:
+    radial-gradient(circle at 50% 18%, rgba(0, 51, 160, 0.25), transparent 40%),
+    radial-gradient(circle at 86% 70%, rgba(108, 172, 228, 0.11), transparent 42%),
+    linear-gradient(135deg, rgba(243, 248, 252, 0.034), transparent 50%);
+}
+
+.interface-section .interface-status-bar {
+  color: var(--xu-white-blue);
+  text-shadow: 0 0 12px rgba(108, 172, 228, 0.28);
+}
+
+.interface-section .interface-status-bar > span,
+.interface-section .interface-status-bar > .interface-system-toggle {
+  border-color: rgba(108, 172, 228, 0.24);
+  background:
+    linear-gradient(145deg, rgba(0, 51, 160, 0.115), rgba(108, 172, 228, 0.050)),
+    rgba(243, 248, 252, 0.026);
+  box-shadow:
+    0 0 0 1px rgba(108, 172, 228, 0.035),
+    0 0 18px rgba(0, 51, 160, 0.110),
+    inset 0 0 16px rgba(108, 172, 228, 0.022);
+}
+
+.interface-section .interface-system-toggle i,
+.interface-section .interface-status-bar > span:nth-child(1) i {
+  background: var(--xu-cura-blue);
+  box-shadow:
+    0 0 10px rgba(108, 172, 228, 0.98),
+    0 0 24px rgba(108, 172, 228, 0.58),
+    0 0 44px rgba(0, 51, 160, 0.28);
+}
+
+.interface-section .interface-system-toggle i::after,
+.interface-section .interface-status-bar > span:nth-child(1) i::after {
+  background: radial-gradient(circle, rgba(108, 172, 228, 0.42), rgba(0, 51, 160, 0.14) 38%, transparent 70%);
+}
+
+.interface-section .interface-status-bar > span:nth-child(3) i {
+  background: var(--xu-dartagnan-grey);
+  box-shadow:
+    0 0 10px rgba(209, 209, 206, 0.76),
+    0 0 22px rgba(108, 172, 228, 0.34);
+}
+
+.interface-section .interface-rail-label,
+.interface-section .interface-output-label,
+.interface-section .interface-response .panel-label {
+  color: var(--xu-cura-blue) !important;
+  text-shadow:
+    0 0 10px rgba(108, 172, 228, 0.58),
+    0 0 22px rgba(108, 172, 228, 0.20);
+}
+
+.interface-section .interface-rail-subtitle,
+.interface-section .interface-response p:not(.panel-label),
+.interface-section .interface-system-list li,
+.interface-section .interface-showcase-caption p,
+.interface-section .interface-signal-chip strong {
+  color: var(--xu-muted) !important;
+}
+
+.interface-section .interface-response h3,
+.interface-section .interface-output-card strong,
+.interface-section .interface-jump-link,
+.interface-section .interface-path strong,
+.interface-section .interface-showcase-caption strong {
+  color: var(--xu-text);
+}
+
+/* Contextual bay colors: Active Pathways = Xavier Blue, Operational = Running Man Blue, Showcase = Cura Blue/Grey. */
+.interface-section.interface-system-set-primary,
+.interface-section .interface-shell {
+  --interface-accent: var(--xu-cura-blue);
+  --interface-accent-rgb: 108, 172, 228;
+  --interface-accent-text: #b8dcf7;
+  --interface-accent-soft: rgba(108, 172, 228, 0.125);
+  --interface-accent-border: rgba(108, 172, 228, 0.60);
+  --interface-accent-border-strong: rgba(184, 220, 247, 0.76);
+  --interface-accent-glow: rgba(108, 172, 228, 0.28);
+}
+
+.interface-section.interface-system-set-operations {
+  --interface-accent: var(--xu-running-blue);
+  --interface-accent-rgb: 0, 51, 160;
+  --interface-accent-text: #8fb4ff;
+  --interface-accent-soft: rgba(0, 51, 160, 0.140);
+  --interface-accent-border: rgba(0, 51, 160, 0.64);
+  --interface-accent-border-strong: rgba(143, 180, 255, 0.78);
+  --interface-accent-glow: rgba(0, 51, 160, 0.32);
+}
+
+.interface-section.interface-system-set-media {
+  --interface-accent: var(--xu-grey);
+  --interface-accent-rgb: 158, 162, 162;
+  --interface-accent-text: #d1d1ce;
+  --interface-accent-soft: rgba(158, 162, 162, 0.120);
+  --interface-accent-border: rgba(158, 162, 162, 0.55);
+  --interface-accent-border-strong: rgba(209, 209, 206, 0.78);
+  --interface-accent-glow: rgba(158, 162, 162, 0.22);
+}
+
+.interface-section .interface-path {
+  border-color: rgba(var(--interface-accent-rgb), 0.24);
+  background:
+    linear-gradient(145deg, rgba(var(--interface-accent-rgb), 0.070), rgba(243, 248, 252, 0.028)),
+    rgba(243, 248, 252, 0.026);
+}
+
+.interface-section .interface-path:hover,
+.interface-section .interface-path:focus-visible,
+.interface-section .interface-path.is-active {
+  color: var(--xu-text);
+  border-color: var(--interface-accent-border);
+  background:
+    linear-gradient(145deg, var(--interface-accent-soft), rgba(243, 248, 252, 0.045)),
+    rgba(var(--interface-accent-rgb), 0.070);
+  box-shadow:
+    0 0 0 1px rgba(var(--interface-accent-rgb), 0.060),
+    0 0 24px var(--interface-accent-glow),
+    inset 0 0 24px rgba(var(--interface-accent-rgb), 0.040);
+}
+
+.interface-section .interface-path span {
+  color: var(--interface-accent-text);
+  background:
+    radial-gradient(circle at 36% 28%, rgba(243, 248, 252, 0.26), transparent 25%),
+    radial-gradient(circle at 50% 52%, rgba(var(--interface-accent-rgb), 0.25), rgba(var(--interface-accent-rgb), 0.075) 58%, rgba(12, 35, 64, 0.26) 100%);
+  border-color: rgba(var(--interface-accent-rgb), 0.38);
+  box-shadow:
+    inset 0 0 14px rgba(var(--interface-accent-rgb), 0.10),
+    0 0 18px rgba(var(--interface-accent-rgb), 0.14);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.68),
+    0 0 10px rgba(var(--interface-accent-rgb), 0.54);
+}
+
+.interface-section .interface-path:hover span,
+.interface-section .interface-path:focus-visible span,
+.interface-section .interface-path.is-active span {
+  color: #ffffff;
+  border-color: var(--interface-accent-border-strong);
+  background:
+    radial-gradient(circle at 36% 28%, rgba(243, 248, 252, 0.34), transparent 25%),
+    radial-gradient(circle at 50% 52%, rgba(var(--interface-accent-rgb), 0.34), rgba(var(--interface-accent-rgb), 0.13) 58%, rgba(12, 35, 64, 0.18) 100%);
+  box-shadow:
+    inset 0 0 16px rgba(var(--interface-accent-rgb), 0.18),
+    0 0 22px rgba(var(--interface-accent-rgb), 0.28),
+    0 0 40px rgba(var(--interface-accent-rgb), 0.14);
+}
+
+.interface-section .interface-output-card,
+.interface-section .interface-video-frame,
+.interface-section .interface-showcase-frame,
+.interface-section .interface-command-line,
+.interface-section .interface-signal-chip,
+.interface-section .interface-playback-status,
+.interface-section .interface-media-toggle,
+.interface-section .interface-jump-link {
+  border-color: rgba(108, 172, 228, 0.28);
+  background:
+    linear-gradient(145deg, rgba(108, 172, 228, 0.100), rgba(12, 35, 64, 0.20)),
+    rgba(243, 248, 252, 0.040);
+  box-shadow:
+    0 0 0 1px rgba(108, 172, 228, 0.040),
+    0 14px 34px rgba(0, 0, 0, 0.22),
+    0 0 24px rgba(108, 172, 228, 0.10),
+    inset 0 0 24px rgba(108, 172, 228, 0.040);
+}
+
+.interface-section .interface-command-line {
+  border-color: rgba(108, 172, 228, 0.48) !important;
+  background:
+    linear-gradient(145deg, rgba(243, 248, 252, 0.080), rgba(243, 248, 252, 0.032)),
+    radial-gradient(circle at left center, rgba(108, 172, 228, 0.13), transparent 42%),
+    rgba(12, 35, 64, 0.56) !important;
+  box-shadow:
+    0 0 0 1px rgba(108, 172, 228, 0.090),
+    0 0 26px rgba(108, 172, 228, 0.17),
+    inset 0 0 28px rgba(108, 172, 228, 0.066) !important;
+}
+
+.interface-section .interface-command-line::before,
+.interface-section .interface-playback-status::before,
+.interface-section .interface-media-toggle::before,
+.interface-section .interface-jump-link::before {
+  background: linear-gradient(90deg, transparent, rgba(108, 172, 228, 0.25), rgba(0, 51, 160, 0.15), rgba(209, 209, 206, 0.08), transparent) !important;
+}
+
+.interface-section .interface-command-prefix,
+.interface-section .interface-cursor,
+.interface-section .interface-showcase-caption span {
+  color: var(--xu-cura-blue) !important;
+}
+
+.interface-section .interface-cursor {
+  background: var(--xu-cura-blue) !important;
+  box-shadow: 0 0 18px rgba(108, 172, 228, 0.72) !important;
+}
+
+.interface-section .interface-system-list li::before {
+  background: var(--xu-cura-blue) !important;
+  box-shadow:
+    0 0 10px rgba(108, 172, 228, 0.96),
+    0 0 22px rgba(108, 172, 228, 0.56),
+    0 0 38px rgba(0, 51, 160, 0.26) !important;
+}
+
+.interface-section .interface-showcase-caption span {
+  background:
+    linear-gradient(145deg, rgba(12, 35, 64, 0.84), rgba(6, 20, 38, 0.62)),
+    radial-gradient(circle at 12% 50%, rgba(108, 172, 228, 0.22), transparent 62%);
+  border-color: rgba(108, 172, 228, 0.38);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.30),
+    0 0 18px rgba(108, 172, 228, 0.13),
+    inset 0 0 18px rgba(108, 172, 228, 0.050);
+}
+
+.interface-section .interface-media-frame-shell::before {
+  background: linear-gradient(135deg, rgba(108, 172, 228, 0.32), rgba(0, 51, 160, 0.22), rgba(158, 162, 162, 0.12));
+}
+
+.interface-section .interface-showcase-frame::after {
+  background:
+    linear-gradient(180deg, transparent 48%, rgba(12, 35, 64, 0.84)),
+    linear-gradient(90deg, rgba(108, 172, 228, 0.16), transparent 28%, transparent 72%, rgba(158, 162, 162, 0.12));
+}
+
+.interface-section .interface-signal-chip:nth-child(1) {
+  border-color: rgba(108, 172, 228, 0.36);
+  background:
+    linear-gradient(145deg, rgba(108, 172, 228, 0.105), rgba(12, 35, 64, 0.070)),
+    radial-gradient(circle at 50% 16%, rgba(108, 172, 228, 0.19), transparent 45%),
+    rgba(243, 248, 252, 0.034);
+}
+
+.interface-section .interface-signal-chip:nth-child(2) {
+  border-color: rgba(0, 51, 160, 0.42);
+  background:
+    linear-gradient(145deg, rgba(0, 51, 160, 0.145), rgba(108, 172, 228, 0.055)),
+    radial-gradient(circle at 50% 16%, rgba(0, 51, 160, 0.22), transparent 45%),
+    rgba(243, 248, 252, 0.034);
+}
+
+.interface-section .interface-signal-chip:nth-child(3) {
+  border-color: rgba(158, 162, 162, 0.40);
+  background:
+    linear-gradient(145deg, rgba(158, 162, 162, 0.115), rgba(108, 172, 228, 0.055)),
+    radial-gradient(circle at 50% 16%, rgba(209, 209, 206, 0.16), transparent 45%),
+    rgba(243, 248, 252, 0.034);
+}
+
+.interface-section .interface-signal-chip:nth-child(1)::after {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(243, 248, 252, 0.42), transparent 22%),
+    radial-gradient(circle at 50% 52%, rgba(108, 172, 228, 0.56), rgba(108, 172, 228, 0.20) 43%, rgba(12, 35, 64, 0.68) 69%);
+  border-color: rgba(184, 220, 247, 0.62);
+}
+
+.interface-section .interface-signal-chip:nth-child(2)::after {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(243, 248, 252, 0.40), transparent 22%),
+    radial-gradient(circle at 50% 52%, rgba(0, 51, 160, 0.62), rgba(0, 51, 160, 0.25) 43%, rgba(12, 35, 64, 0.70) 69%);
+  border-color: rgba(143, 180, 255, 0.64);
+}
+
+.interface-section .interface-signal-chip:nth-child(3)::after {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.46), transparent 22%),
+    radial-gradient(circle at 50% 52%, rgba(209, 209, 206, 0.54), rgba(158, 162, 162, 0.22) 43%, rgba(12, 35, 64, 0.68) 69%);
+  border-color: rgba(209, 209, 206, 0.66);
+}
+
+.interface-section .interface-signal-chip:nth-child(1) span {
+  color: #b8dcf7;
+}
+
+.interface-section .interface-signal-chip:nth-child(2) span {
+  color: #8fb4ff;
+}
+
+.interface-section .interface-signal-chip:nth-child(3) span {
+  color: #d1d1ce;
+}
+
+.interface-section .interface-jump-link,
+.interface-section .interface-media-toggle,
+.interface-section .interface-playback-status {
+  color: var(--xu-text) !important;
+  border-color: rgba(108, 172, 228, 0.42) !important;
+}
+
+.interface-section .interface-jump-link:hover,
+.interface-section .interface-jump-link:focus-visible,
+.interface-section .interface-media-toggle:hover,
+.interface-section .interface-media-toggle:focus-visible {
+  color: #ffffff !important;
+  border-color: rgba(108, 172, 228, 0.70) !important;
+  background:
+    linear-gradient(145deg, rgba(108, 172, 228, 0.22), rgba(0, 51, 160, 0.16)),
+    radial-gradient(circle at 18% 18%, rgba(108, 172, 228, 0.16), transparent 44%),
+    rgba(243, 248, 252, 0.058) !important;
+  box-shadow:
+    0 0 0 1px rgba(108, 172, 228, 0.095),
+    0 16px 38px rgba(0, 0, 0, 0.25),
+    0 0 36px rgba(108, 172, 228, 0.24),
+    0 0 54px rgba(0, 51, 160, 0.16),
+    inset 0 0 30px rgba(108, 172, 228, 0.070) !important;
+}
+
+.interface-section .interface-playback-dot {
+  background: var(--xu-cura-blue);
+  box-shadow:
+    0 0 12px rgba(108, 172, 228, 0.92),
+    0 0 28px rgba(108, 172, 228, 0.46),
+    0 0 42px rgba(0, 51, 160, 0.24);
+}
+
+body.winterface-offline .interface-section .interface-system-toggle i {
+  background: var(--xu-grey);
+  box-shadow:
+    0 0 10px rgba(158, 162, 162, 0.78),
+    0 0 22px rgba(158, 162, 162, 0.38);
+}
+
+body.winterface-offline .interface-section .interface-system-toggle i::after {
+  background: radial-gradient(circle, rgba(158, 162, 162, 0.28), rgba(108, 172, 228, 0.10) 38%, transparent 70%);
+}
+
+/* Fullscreen keeps the same clean Xavier system shell without affecting the page behind it. */
+.interface-section.is-winterface-maximized .interface-shell {
+  background:
+    radial-gradient(circle at 9% 11%, rgba(0, 51, 160, 0.34), transparent 38%),
+    radial-gradient(circle at 91% 13%, rgba(108, 172, 228, 0.22), transparent 38%),
+    radial-gradient(circle at 48% 95%, rgba(158, 162, 162, 0.14), transparent 44%),
+    linear-gradient(145deg, rgba(243, 248, 252, 0.072), rgba(243, 248, 252, 0.022)),
+    linear-gradient(145deg, #07172c, #020812 74%);
+}
+
+@media (max-width: 768px) {
+  .interface-section .interface-shell {
+    border-color: rgba(108, 172, 228, 0.30);
+  }
+
+  .interface-section .interface-status-bar,
+  .interface-section .interface-rail,
+  .interface-section .interface-core,
+  .interface-section .interface-side-panel {
+    border-color: rgba(108, 172, 228, 0.20);
+  }
+}
+
